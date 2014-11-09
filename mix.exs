@@ -6,6 +6,8 @@ defmodule Issues.Mixfile do
       app: :issues,
       version: "0.0.1",
       elixir: "~> 1.0",
+      escript: escript_config,
+      source_url: "https://github.com/kaze/elixir-issues",
       deps: deps
     ]
   end
@@ -17,7 +19,8 @@ defmodule Issues.Mixfile do
     [
       applications: [
         :logger,
-        :httpoison
+        :httpoison,
+        :jsx 
       ]
     ]
   end
@@ -34,7 +37,12 @@ defmodule Issues.Mixfile do
   defp deps do
     [
       { :httpoison, "~> 0.4" },
-      { :jsx,       "~> 2.0" }
+      { :jsx,       "~> 2.0" },
+      { :ex_doc,    github: "elixir-lang/ex_doc" }
     ]
+  end
+  
+  defp escript_config do 
+    [ main_module: Issues.CLI ]
   end
 end
